@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BLE Scanner Companion</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="header-top">
+        <div>
+          <h1>BLE Scanner Companion</h1>
+          <p>Lokale Analyse und Bearbeitung von MetaRadar-ähnlichen Exportdaten.</p>
+        </div>
+        <button id="themeToggleBtn" class="secondary" type="button" aria-label="Darstellungsmodus wechseln">
+          🌙 Dark Mode
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="panel controls">
+        <h2>Daten laden</h2>
+        <p>Importiere eine JSON-Datei mit den Arrays <code>device</code>, <code>location</code> und <code>device_to_location</code>.</p>
+        <div class="row">
+          <input id="fileInput" type="file" accept="application/json" />
+          <button id="loadSampleBtn" type="button">Beispieldaten laden</button>
+          <button id="exportBtn" type="button" disabled>Daten exportieren</button>
+        </div>
+        <p id="status" class="status">Noch keine Daten geladen.</p>
+      </section>
+
+      <section class="grid">
+        <article class="panel">
+          <h2>Übersicht</h2>
+          <ul id="stats" class="stats">
+            <li>Geräte: <strong id="statDevices">0</strong></li>
+            <li>Standorte: <strong id="statLocations">0</strong></li>
+            <li>Beobachtungen: <strong id="statObservations">0</strong></li>
+            <li>Ø RSSI: <strong id="statRssi">-</strong></li>
+          </ul>
+        </article>
+
+        <article class="panel">
+          <h2>Heatmap (vereinfachte Vorschau)</h2>
+          <canvas id="mapCanvas" width="640" height="320" aria-label="Heatmap-Vorschau"></canvas>
+          <p class="hint">Je dunkler der Punkt, desto mehr Beobachtungen an der Position.</p>
+        </article>
+      </section>
+
+      <section class="panel">
+        <div class="row table-head">
+          <h2>Geräte</h2>
+          <input id="searchInput" type="search" placeholder="Nach Name, MAC oder Tag suchen" />
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>MAC</th>
+                <th>Name (editierbar)</th>
+                <th>Tag (editierbar)</th>
+                <th>Beobachtungen</th>
+                <th>Letztes Signal</th>
+              </tr>
+            </thead>
+            <tbody id="deviceBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js" type="module"></script>
+  </body>
+</html>
