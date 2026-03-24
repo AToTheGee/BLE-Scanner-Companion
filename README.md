@@ -5,7 +5,10 @@ Ein leichtgewichtiger, lokal nutzbarer Web-Prototyp für BLE-Analysen.
 ## Funktionen
 - JSON-Import von `device`, `location`, `device_to_location`
 - Übersicht mit Geräte-/Standort-/Beobachtungsstatistiken
-- Einfache Heatmap-Vorschau auf Basis der Koordinaten
+- Erweiterte Kennzahlen: aktive Tage, stärkster Hotspot, geschätzte Strecke pro Gerät
+- Kartenansicht mit Methoden: Heatmap, Routenansicht, Punkte pro Erkennungstag
+- Geräte-/Tagesfilter für die Karte (z. B. verschiedene Orte an unterschiedlichen Tagen)
+- Timeline-Liste mit Detektionen pro Tag
 - Geräte-Tabelle mit Suche und Inline-Bearbeitung (`name`, `tag`)
 - Export der bearbeiteten Daten als JSON
 - Darkmode-Switch (mit Speicherung der Auswahl im Browser)
