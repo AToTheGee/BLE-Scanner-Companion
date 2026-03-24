@@ -39,14 +39,51 @@
             <li>Standorte: <strong id="statLocations">0</strong></li>
             <li>Beobachtungen: <strong id="statObservations">0</strong></li>
             <li>Ø RSSI: <strong id="statRssi">-</strong></li>
+            <li>Aktive Tage: <strong id="statDays">-</strong></li>
+            <li>Stärkster Hotspot: <strong id="statHotspot">-</strong></li>
           </ul>
         </article>
 
         <article class="panel">
-          <h2>Heatmap (vereinfachte Vorschau)</h2>
-          <canvas id="mapCanvas" width="640" height="320" aria-label="Heatmap-Vorschau"></canvas>
-          <p class="hint">Je dunkler der Punkt, desto mehr Beobachtungen an der Position.</p>
+          <div class="row table-head">
+            <h2>Kartenfilter & Methoden</h2>
+          </div>
+          <div class="filters">
+            <label>
+              Gerät
+              <select id="deviceFilter"></select>
+            </label>
+            <label>
+              Von (Tag)
+              <input id="fromDate" type="date" />
+            </label>
+            <label>
+              Bis (Tag)
+              <input id="toDate" type="date" />
+            </label>
+            <label>
+              Methode
+              <select id="mapMethod">
+                <option value="heat">Heatmap</option>
+                <option value="route">Route je Gerät</option>
+                <option value="dots">Punkte je Erkennungstag</option>
+              </select>
+            </label>
+          </div>
+          <p class="hint">Filtere Geräte und Tage, um Positionen über mehrere Orte und Zeiträume auszuwerten.</p>
         </article>
+      </section>
+
+      <section class="panel map-layout">
+        <div>
+          <h2>Karte (vereinfachte Vorschau)</h2>
+          <canvas id="mapCanvas" width="920" height="380" aria-label="Karten-Vorschau"></canvas>
+          <p class="hint">Farben markieren unterschiedliche Erkennungstage. Linien zeigen Bewegungen eines ausgewählten Geräts.</p>
+        </div>
+        <aside class="timeline">
+          <h3>Detektionen nach Tagen</h3>
+          <ul id="dayList"></ul>
+        </aside>
       </section>
 
       <section class="panel">
@@ -63,6 +100,7 @@
                 <th>Tag (editierbar)</th>
                 <th>Beobachtungen</th>
                 <th>Letztes Signal</th>
+                <th>Geschätzte Strecke</th>
               </tr>
             </thead>
             <tbody id="deviceBody"></tbody>
